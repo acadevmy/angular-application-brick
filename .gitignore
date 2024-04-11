@@ -1,0 +1,7 @@
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
+.idea
+.dart_tool
+.DS_Store

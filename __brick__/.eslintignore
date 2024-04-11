@@ -1,0 +1,7 @@
+projects/**/*
+dist
+package.json
+package-lock.json
+.angular
+.vscode
+.idea
