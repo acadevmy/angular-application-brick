@@ -96,6 +96,9 @@
         },
         "serve": {
           "builder": "@ngx-env/builder:dev-server",
+          "options": {
+            "port": {{port}}
+          },
           "configurations": {
             "production": {
               "buildTarget": "{{applicationName.paramCase()}}:build:production"
