@@ -39,4 +39,4 @@ vars:
     type: number
     description: Port to listen on.
     prompt: Which port do you want to use for this application?
-    default: 4000
+    default: 5000
