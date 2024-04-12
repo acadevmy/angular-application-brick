@@ -16,12 +16,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         alt="Devmy Logo"
         width="436"
         height="128"
+        priority
       />
       <img
         ngSrc="https://devmy.it/assets/svg/think.design.code.svg"
         alt="Think Design Code"
         width="218"
         height="64"
+        priority
       />
 
       <h1>{{ 'devmy-likes' | translate: { counter: counter() } }}</h1>

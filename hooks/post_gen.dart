@@ -18,13 +18,15 @@ Future<void> runPnpm({
 Future<void> runGit({
   required HookContext context,
 }) async {
-  context.logger.info('📚 Staging initial scaffold files...');
+  final applicationName = context.vars['applicationName'].toString();
+
+  context.logger.info('📚 Staging initial angular application files...');
   await Process.run('git', ['add', '.'],);
 
-  context.logger.info('📚 Committing "chore(scaffold): angular application"...');
+  context.logger.info('📚 Committing "chore(${applicationName.paramCase}): created angular application"...');
   await Process.run(
     'git',
-    ['commit', '-m', '"chore(scaffold): angular application"'],
+    ['commit', '-m', '"chore(${applicationName.paramCase}): created angular application"'],
   );
 
   context.logger.success('📚 Git commited successfully! 🚀');
