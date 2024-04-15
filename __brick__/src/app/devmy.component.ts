@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { DecimalPipe, NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { I18nService, SupportedLanguage } from './core';
-import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { interval } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -8,7 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: '{{prefix.paramCase()}}-devmy',
   standalone: true,
-  imports: [TranslateModule, UpperCasePipe, NgOptimizedImage],
+  imports: [TranslateModule, UpperCasePipe, NgOptimizedImage, DecimalPipe],
   template: `
     <div class="devmy">
       <img
@@ -26,13 +26,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         priority
       />
 
-      <h1>{{ 'devmy-likes' | translate: { counter: counter() } }}</h1>
-      <button (click)="add()">{{ 'add-like' | translate }}</button>
+      <h1>{{=<% %>=}}{{ 'devmy-likes' | translate: { counter: counter() | number } }}<%={{ }}=%></h1>
+      <button (click)="add()">{{=<% %>=}}{{ 'add-like' | translate }}<%={{ }}=%></button>
 
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {
           <button class="outline" (click)="changeLanguage(lang)">
-            {{ lang | uppercase }}
+          {{=<% %>=}}{{ lang | uppercase }}<%={{ }}=%>
           </button>
         }
       </div>

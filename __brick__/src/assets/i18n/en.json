@@ -1,5 +1,5 @@
 {
-    "devmy-likes": "Likes: {{ counter }}",
+    "devmy-likes": "Likes: {{=<% %>=}}{{ counter }}<%={{ }}=%>",
     "add-like": "Like it!"
   }
   

@@ -3,7 +3,6 @@ import { provideRouter, withComponentInputBinding, withViewTransitions } from '@
 import { i18nConfig } from './core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideClientHydration } from '@angular/platform-browser';
 import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
@@ -28,7 +27,6 @@ const ngrxConfig = [
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(),
     provideHttpClient(),
     ...animationsConfig,
     ...i18nConfig,
