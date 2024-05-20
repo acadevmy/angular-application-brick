@@ -120,25 +120,6 @@
             "buildTarget": "{{applicationName.paramCase()}}:build"
           }
         },
-        "test": {
-          "builder": "@ngx-env/builder:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
