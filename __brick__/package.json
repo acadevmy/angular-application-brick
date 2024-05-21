@@ -5,6 +5,7 @@
     "preinstall": "pnpm dlx only-allow pnpm",
     "dev": "ng serve",
     "start": "ng serve --configuration production",
+    "build": "ng build",
     "format": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}'",
     "format:fix": "prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write",
     "lint": "ng lint",
@@ -63,5 +64,12 @@
   "engines": {
     "node": ">=20.13.1",
     "pnpm": ">=9.1.1"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "inputs": ["default", "environment"]
+      }
+    }
   }
 }
