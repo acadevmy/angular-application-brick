@@ -3,5 +3,5 @@ import { env } from '@dotenv-run/core';
 
 env({
   root: '../../..',
-  prefix: "{{applicationName.constantCase()}}_",
+  prefix: '{{applicationName.constantCase()}}_',
 });

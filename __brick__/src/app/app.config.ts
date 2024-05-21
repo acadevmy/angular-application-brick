@@ -15,14 +15,14 @@ const routerConfig = [
   provideRouter(
     routes,
     withComponentInputBinding(),
-    withViewTransitions({ skipInitialTransition: true })
-  )
+    withViewTransitions({ skipInitialTransition: true }),
+  ),
 ];
 
 const ngrxConfig = [
   provideStore(),
   provideEffects(),
-  provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+  provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 ];
 
 export const appConfig: ApplicationConfig = {
@@ -31,6 +31,6 @@ export const appConfig: ApplicationConfig = {
     ...animationsConfig,
     ...i18nConfig,
     ...ngrxConfig,
-    ...routerConfig
-  ]
+    ...routerConfig,
+  ],
 };
