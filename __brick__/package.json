@@ -1,6 +1,8 @@
 {
   "name": "{{applicationName.paramCase()}}",
   "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.1.1",
   "scripts": {
     "preinstall": "pnpm dlx only-allow pnpm",
     "dev": "ng serve",
@@ -13,7 +15,6 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest",
     "test:headless": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --coverage"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.9",
     "@angular/common": "^17.3.9",
@@ -46,6 +47,7 @@
     "@angular-eslint/template-parser": "17.4.1",
     "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.3.9",
+    "@ngx-env/builder": "^17.3.0",
     "@typescript-eslint/eslint-plugin": "7.9.0",
     "@typescript-eslint/parser": "7.9.0",
     "eslint": "^8.56.0",
@@ -58,10 +60,6 @@
     "@dotenv-run/jest-angular": "^0.1.1",
     "prettier": "^3.2.5",
     "typescript": "~5.4.0"
-  },
-  "engines": {
-    "node": ">=20.13.1",
-    "pnpm": ">=9.1.1"
   },
   "nx": {
     "targets": {
