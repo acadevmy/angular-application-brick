@@ -31,7 +31,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {
-          <button class="outline" (click)="changeLanguage(lang)">
+          <button class="btn-outline" (click)="changeLanguage(lang)">
           {{=<% %>=}}{{ lang | uppercase }}<%={{ }}=%>
           </button>
         }
@@ -67,7 +67,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
           background: #d65802;
         }
 
-        &.outline {
+        &.btn-outline {
           border: 1px solid #ff6600;
           background: transparent;
 
