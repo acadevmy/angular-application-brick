@@ -1,5 +1,6 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
+import { APP_INITIALIZER, ApplicationConfig, ErrorHandler, isDevMode } from '@angular/core';
+import { Router, provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
+import { TraceService, createErrorHandler } from '@sentry/angular-ivy';
 import { i18nConfig } from './core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -25,12 +26,33 @@ const ngrxConfig = [
   provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 ];
 
+const sentryConfig = [
+  {
+    provide: ErrorHandler,
+    useValue: createErrorHandler({
+      showDialog: false,
+      logErrors: true,
+    }),
+  },
+  {
+    provide: TraceService,
+    deps: [Router],
+  },
+  {
+    provide: APP_INITIALIZER,
+    useFactory: () => () => {},
+    deps: [TraceService],
+    multi: true,
+  },
+];
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     ...animationsConfig,
     ...i18nConfig,
     ...ngrxConfig,
+    ...sentryConfig,
     ...routerConfig,
   ],
 };
