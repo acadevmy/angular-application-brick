@@ -2,7 +2,7 @@
   "name": "{{applicationName.paramCase()}}",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.1.2",
   "scripts": {
     "preinstall": "pnpm dlx only-allow pnpm",
     "dev": "ng serve",
