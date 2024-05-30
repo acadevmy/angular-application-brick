@@ -33,7 +33,7 @@ import { I18nService, SupportedLanguage } from './core';
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {
           <button class="btn-outline" (click)="changeLanguage(lang)">
-          {{=<% %>=}}{{ lang | uppercase }}<%={{ }}=%>
+            {{=<% %>=}}{{ lang | uppercase }}<%={{ }}=%>
           </button>
         }
       </div>
