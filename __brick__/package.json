@@ -8,8 +8,8 @@
     "dev": "ng serve",
     "start": "ng serve --configuration production",
     "build": "ng build",
-    "lint": "ng lint",
-    "lint:fix": "ng lint --fix",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,html}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx,html}' --fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --passWithNoTests",
     "test:headless": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --silent --coverage  --passWithNoTests"
   },
