@@ -1,11 +1,12 @@
+import { HttpClient } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
 import {
-  ModuleTranslateLoader,
   IModuleTranslationOptions as ModuleTranslationOptions,
+  ModuleTranslateLoader,
 } from '@larscom/ngx-translate-module-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
+
 import { I18nService } from './services';
-import { importProvidersFrom } from '@angular/core';
 
 export function moduleHttpLoaderFactory(http: HttpClient) {
   const baseTranslateUrl = './assets/i18n';

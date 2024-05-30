@@ -1,7 +1,8 @@
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { SupportedLanguage, supportedLanguages } from '../models';
 import { Injectable } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+
+import { SupportedLanguage, supportedLanguages } from '../models';
 
 @Injectable()
 export class I18nService {

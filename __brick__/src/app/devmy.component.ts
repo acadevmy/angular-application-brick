@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { DecimalPipe, NgOptimizedImage, UpperCasePipe } from '@angular/common';
-import { I18nService, SupportedLanguage } from './core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 import { interval } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { I18nService, SupportedLanguage } from './core';
 
 @Component({
   selector: '{{prefix.paramCase()}}-devmy',

@@ -1,14 +1,20 @@
+import { provideHttpClient } from '@angular/common/http';
 import { APP_INITIALIZER, ApplicationConfig, ErrorHandler, isDevMode } from '@angular/core';
-import { Router, provideRouter, withComponentInputBinding, withViewTransitions } from '@angular/router';
-import { TraceService, createErrorHandler } from '@sentry/angular-ivy';
-import { i18nConfig } from './core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+  provideRouter,
+  Router,
+  withComponentInputBinding,
+  withViewTransitions,
+} from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
-import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { createErrorHandler, TraceService } from '@sentry/angular-ivy';
+
 import { routes } from './app.routes';
+import { i18nConfig } from './core';
 
 const animationsConfig = [provideAnimations(), provideAnimationsAsync()];
 
