@@ -1,5 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, ApplicationConfig, ErrorHandler, isDevMode } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  ErrorHandler,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
@@ -46,7 +52,8 @@ const sentryConfig = [
   },
   {
     provide: APP_INITIALIZER,
-    useFactory: () => () => {},
+    useFactory: () => () => {
+    },
     deps: [TraceService],
     multi: true,
   },
@@ -55,6 +62,7 @@ const sentryConfig = [
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     ...animationsConfig,
     ...i18nConfig,
     ...ngrxConfig,

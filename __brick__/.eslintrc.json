@@ -6,7 +6,9 @@
   "env": {
     "es6": true
   },
-  "plugins": ["simple-import-sort"],
+  "plugins": [
+    "simple-import-sort"
+  ],
   "overrides": [
     {
       "parserOptions": {
@@ -20,7 +22,8 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:@ngrx/all"
       ],
       "rules": {
         "@typescript-eslint/ban-ts-comment": 0,
@@ -59,17 +62,6 @@
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error"
       }
-    },
-    {
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
-      "files": [
-        "src/**/*.ts"
-      ],
-      "extends": [
-        "plugin:@ngrx/strict-requiring-type-checking"
-      ]
     },
     {
       "files": [
