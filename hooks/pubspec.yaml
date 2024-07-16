@@ -4,4 +4,5 @@ environment:
   sdk: ^3.0.0
 
 dependencies:
+  chalkdart: ^2.2.1
   mason: 0.1.0-dev.57

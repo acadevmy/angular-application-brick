@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.6.1"
+  args:
+    dependency: transitive
+    description:
+      name: args
+      sha256: "7cf60b9f0cc88203c5a190b4cd62a99feea42759a7fa695010eb5de1c0b2252a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
   async:
     dependency: transitive
     description:
@@ -17,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  chalkdart:
+    dependency: "direct main"
+    description:
+      name: chalkdart
+      sha256: "0b7ec5c6a6bafd1445500632c00c573722bd7736e491675d4ac3fe560bbd9cfe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.1"
   checked_yaml:
     dependency: transitive
     description:
