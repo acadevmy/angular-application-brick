@@ -52,8 +52,7 @@ const sentryConfig = [
   },
   {
     provide: APP_INITIALIZER,
-    useFactory: () => () => {
-    },
+    useFactory: () => () => {},
     deps: [TraceService],
     multi: true,
   },

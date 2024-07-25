@@ -12,11 +12,12 @@ void logSentryConfiguration({required HookContext context}) {
 
   String applicationName = context.vars['applicationName'];
 
-  print('   ${applicationName}_SENTRY_DNS');
-  print('   ${applicationName}_SENTRY_TRACE_SAMPLE_RATE');
-  print('   ${applicationName}_SENTRY_REPLAY_SAMPLE_RATE');
-  print('   ${applicationName}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE');
-  print('   ${applicationName}_SENTRY_TRACE_PROPAGATION_TARGETS');
-  print('   ${applicationName}_BASE_API_URL');
-  print('   ${applicationName}_FORCE_UPDATE_INFORMATION_PARAM\n');
+  print('   ${applicationName.constantCase}_SENTRY_DNS');
+  print('   ${applicationName.constantCase}_SENTRY_TRACE_SAMPLE_RATE');
+  print('   ${applicationName.constantCase}_SENTRY_REPLAY_SAMPLE_RATE');
+  print(
+      '   ${applicationName.constantCase}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE');
+  print('   ${applicationName.constantCase}_SENTRY_TRACE_PROPAGATION_TARGETS');
+  print('   ${applicationName.constantCase}_BASE_API_URL');
+  print('   ${applicationName.constantCase}_FORCE_UPDATE_INFORMATION_PARAM\n');
 }
