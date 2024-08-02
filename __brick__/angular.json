@@ -52,7 +52,7 @@
               "prefix": "{{applicationName.constantCase()}}_",
               "root": "../../"
             },
-            "outputPath": "dist/{{applicationName.paramCase()}}",
+            "outputPath": "dist",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -76,7 +76,7 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "dist/{{applicationName.paramCase()}}",
+              "outputPath": "dist",
               "budgets": [
                 {
                   "type": "initial",
