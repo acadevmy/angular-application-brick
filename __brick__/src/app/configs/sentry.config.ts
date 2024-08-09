@@ -10,7 +10,7 @@ import {
 import { isNil, split, toNumber, trim } from 'lodash-es';
 
 export function initSentryConfig() {
-  if (isNil(import.meta.env?.ANGULAR_SENTRY_DNS)) {
+  if (isNil(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_DNS)) {
     // eslint-disable-next-line no-console
     console.warn('Sentry is not initialized!');
 
@@ -18,13 +18,13 @@ export function initSentryConfig() {
   }
 
   init({
-    dsn: import.meta.env?.ANGULAR_SENTRY_DNS,
+    dsn: import.meta.env?.{{applicationName.constantCase()}}_SENTRY_DNS,
     integrations: [browserTracingIntegration(), replayIntegration()],
-    tracesSampleRate: toNumber(import.meta.env?.ANGULAR_SENTRY_TRACE_SAMPLE_RATE),
-    replaysSessionSampleRate: toNumber(import.meta.env?.ANGULAR_SENTRY_REPLAY_SAMPLE_RATE),
-    replaysOnErrorSampleRate: toNumber(import.meta.env?.ANGULAR_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE),
+    tracesSampleRate: toNumber(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_TRACE_SAMPLE_RATE),
+    replaysSessionSampleRate: toNumber(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_REPLAY_SAMPLE_RATE),
+    replaysOnErrorSampleRate: toNumber(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE),
     tracePropagationTargets: split(
-      import.meta.env?.ANGULAR_SENTRY_TRACE_PROPAGATION_TARGETS,
+      import.meta.env?.{{applicationName.constantCase()}}_SENTRY_TRACE_PROPAGATION_TARGETS,
       ',',
     ).map(trim),
   });
