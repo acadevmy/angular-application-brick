@@ -1,27 +1,28 @@
 import { enableProdMode, isDevMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { browserTracingIntegration, init, replayIntegration } from '@sentry/angular-ivy';
-import { split, toNumber, trim } from 'lodash-es';
+import { fast } from 'ngx-fastboot';
 
 import { AppComponent } from './app/app.component';
-import { appConfig } from './app/app.config';
+import { toBoolean } from './utilities';
 
-init({
-  dsn: import.meta.env.{{applicationName.constantCase()}}_SENTRY_DNS,
-  integrations: [browserTracingIntegration(), replayIntegration()],
-  tracesSampleRate: toNumber(import.meta.env.{{applicationName.constantCase()}}_SENTRY_TRACE_SAMPLE_RATE),
-  replaysSessionSampleRate: toNumber(import.meta.env.{{applicationName.constantCase()}}_SENTRY_REPLAY_SAMPLE_RATE),
-  replaysOnErrorSampleRate: toNumber(import.meta.env.{{applicationName.constantCase()}}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE),
-  tracePropagationTargets: split(import.meta.env.{{applicationName.constantCase()}}_SENTRY_TRACE_PROPAGATION_TARGETS, ',').map(
-    trim,
-  ),
-});
-
-if (isDevMode()) {
+if (!isDevMode() || toBoolean(import.meta.env.{{applicationName.constantCase()}}_PRODUCTION)) {
   enableProdMode();
 }
 
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  // eslint-disable-next-line no-console
-  console.error(err),
-);
+fast(bootstrapApplication, AppComponent, {
+  providers: [
+    () => import('./app/configs/sentry.config'),
+    () => import('./app/configs/router.config'),
+    () => import('./app/configs/angular.config'),
+    () => import('./app/configs/ngrx.config'),
+    () => import('./app/core/i18n/i18n.config'),
+  ],
+})
+  .then(async () => {
+    return import('./app/configs/sentry.config').then((config) => config.initSentryConfig());
+  })
+  .catch((err) =>
+    // eslint-disable-next-line no-console
+    console.error(err),
+  );
+

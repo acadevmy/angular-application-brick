@@ -1,5 +1,5 @@
 interface ImportMetaEnv {
-  readonly PRODUCTION: string;
+  readonly {{applicationName.constantCase()}}_PRODUCTION: string;
   readonly {{applicationName.constantCase()}}_SENTRY_DNS: string;
   readonly {{applicationName.constantCase()}}_SENTRY_TRACE_SAMPLE_RATE: string;
   readonly {{applicationName.constantCase()}}_SENTRY_REPLAY_SAMPLE_RATE: string;
