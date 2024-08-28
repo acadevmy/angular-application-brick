@@ -7,7 +7,7 @@
     "preinstall": "pnpm dlx only-allow pnpm",
     "dev": "ng serve",
     "start": "ng serve --configuration production",
-    "build": "ng build",
+    "build": "ng build && find dist/browser -mindepth 1 -maxdepth 1 -exec mv {} dist/browser/.. \\; && rmdir dist/browser",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,html}'",
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx,html}' --fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm jest --passWithNoTests",
