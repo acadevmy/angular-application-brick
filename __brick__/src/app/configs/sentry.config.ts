@@ -6,7 +6,7 @@ import {
   init,
   replayIntegration,
   TraceService,
-} from '@sentry/angular-ivy';
+} from '@sentry/angular';
 import { isNil, split, toNumber, trim } from 'lodash-es';
 
 export function initSentryConfig() {

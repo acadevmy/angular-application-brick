@@ -29,7 +29,7 @@
     "@ngrx/store": "^18.0.1",
     "@ngrx/store-devtools": "^18.0.1",
     "@ngx-translate/core": "^15.0.0",
-    "@sentry/angular-ivy": "^7.118.0",
+    "@sentry/angular": "^8.27.0",
     "@types/lodash-es": "^4.17.12",
     "ngx-fastboot": "^1.2.0",
     "lodash-es": "^4.17.21",
