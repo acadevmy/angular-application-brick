@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, EnvironmentProviders, ErrorHandler, Provider } from '@angular/core';
+import { EnvironmentProviders, ErrorHandler, Provider } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   browserTracingIntegration,
