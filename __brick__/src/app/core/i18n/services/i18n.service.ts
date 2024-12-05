@@ -6,7 +6,7 @@ import { SupportedLanguage, supportedLanguages } from '../models';
 
 @Injectable()
 export class I18nService {
-  constructor(private readonly translateService: TranslateService) {
+  public constructor(private readonly translateService: TranslateService) {
     this.translateService.use(this.translateService.defaultLang);
   }
 

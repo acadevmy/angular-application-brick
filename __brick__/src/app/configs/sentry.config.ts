@@ -9,7 +9,7 @@ import {
 } from '@sentry/angular';
 import { isNil, split, toNumber, trim } from 'lodash-es';
 
-export function initSentryConfig() {
+export function initSentryConfig(): void {
   if (isNil(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_DNS)) {
     // eslint-disable-next-line no-console
     console.warn('Sentry is not initialized!');
@@ -46,11 +46,5 @@ export default [
   {
     provide: TraceService,
     deps: [Router],
-  },
-  {
-    provide: APP_INITIALIZER,
-    useFactory: () => () => {},
-    deps: [TraceService],
-    multi: true,
-  },
+  }
 ] satisfies Array<Provider | EnvironmentProviders>;

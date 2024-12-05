@@ -8,12 +8,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { I18nService } from './services';
 
-export function moduleHttpLoaderFactory(http: HttpClient) {
+export function moduleHttpLoaderFactory(http: HttpClient): ModuleTranslateLoader {
   const baseTranslateUrl = './assets/i18n';
 
   const options: ModuleTranslationOptions = {
     lowercaseNamespace: true,
-    modules: [{ baseTranslateUrl }],
+    modules: [{baseTranslateUrl}],
   };
 
   return new ModuleTranslateLoader(http, options);

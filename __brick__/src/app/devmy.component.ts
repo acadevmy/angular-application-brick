@@ -27,75 +27,78 @@ import { I18nService, SupportedLanguage } from './core';
         priority
       />
 
-      <h1>{{=<% %>=}}{{ 'devmy-likes' | translate: { counter: counter() | number } }}<%={{ }}=%></h1>
-      <button (click)="add()">{{=<% %>=}}{{ 'add-like' | translate }}<%={{ }}=%></button>
+      <h1>{{ =<% %>= }}{{ 'devmy-likes' | translate: {counter: counter() | number} }}<%={{ }}=%></h1>
+      <button (click)="add()">{{ =<% %>= }}{{ 'add-like' | translate }}<%={{ }}=%></button>
 
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {
           <button class="btn-outline" (click)="changeLanguage(lang)">
-            {{=<% %>=}}{{ lang | uppercase }}<%={{ }}=%>
+            {{ =<% %>= }}{{ lang | uppercase }}<%={{ }}=%>
           </button>
         }
       </div>
     </div>
   `,
   styles: `
-    .devmy {
-      width: 100dvw;
-      height: 100dvh;
-      background: #191616;
-      font-family: Monaco, 'Lucida Console', monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      .devmy {
+          width: 100dvw;
+          height: 100dvh;
+          background: #191616;
+          font-family: Monaco, 'Lucida Console', monospace;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
-      h1 {
-        color: white;
-        margin: 1rem 0;
-      }
-
-      button {
-        background: #ff6600;
-        color: white;
-        padding: 0.5rem 1.5rem;
-        border-radius: 0.5rem;
-        border: none;
-        cursor: pointer;
-        transition: all ease-in-out 0.3s;
-
-        &:hover {
-          background: #d65802;
-        }
-
-        &.btn-outline {
-          border: 1px solid #ff6600;
-          background: transparent;
-
-          &:hover {
-            background: #ff6600;
+          h1 {
+              color: white;
+              margin: 1rem 0;
           }
-        }
-      }
 
-      .language-selector {
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        display: flex;
-        gap: 1rem;
+          button {
+              background: #ff6600;
+              color: white;
+              padding: 0.5rem 1.5rem;
+              border-radius: 0.5rem;
+              border: none;
+              cursor: pointer;
+              transition: all ease-in-out 0.3s;
+
+              &:hover {
+                  background: #d65802;
+              }
+
+              &.btn-outline {
+                  border: 1px solid #ff6600;
+                  background: transparent;
+
+                  &:hover {
+                      background: #ff6600;
+                  }
+              }
+          }
+
+          .language-selector {
+              position: absolute;
+              bottom: 1rem;
+              right: 1rem;
+              display: flex;
+              gap: 1rem;
+          }
       }
-    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DevmyComponent {
-  public counter = signal(100000000000);
+  #initialDevmyLikes = 100000000000;
+
+  public counter = signal(this.#initialDevmyLikes);
   public i18nService = inject(I18nService);
   public supportedLanguages = this.i18nService.supportedLanguages;
 
-  constructor() {
-    interval(1000)
+  public constructor() {
+    const oneSecondInMilliseconds = 1000;
+    interval(oneSecondInMilliseconds)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.add(this.generateRandomValue()));
   }
@@ -109,6 +112,9 @@ export default class DevmyComponent {
   }
 
   public generateRandomValue(): number {
-    return Math.round(Math.random() * 100);
+    const multiplier = 100;
+
+    // eslint-disable-next-line sonarjs/pseudo-random
+    return Math.round(Math.random() * multiplier);
   }
 }
