@@ -1,15 +1,14 @@
 import { DecimalPipe, NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { interval } from 'rxjs';
 
 import { I18nService, SupportedLanguage } from './core';
 
 @Component({
-  selector: '{{prefix.paramCase()}}-devmy',
-  standalone: true,
-  imports: [TranslateModule, UpperCasePipe, NgOptimizedImage, DecimalPipe],
+  selector: 'app-devmy',
+  imports: [TranslatePipe, UpperCasePipe, NgOptimizedImage, DecimalPipe],
   template: `
     <div class="devmy">
       <img
@@ -27,65 +26,65 @@ import { I18nService, SupportedLanguage } from './core';
         priority
       />
 
-      <h1>{{ =<% %>= }}{{ 'devmy-likes' | translate: {counter: counter() | number} }}<%={{ }}=%></h1>
-      <button (click)="add()">{{ =<% %>= }}{{ 'add-like' | translate }}<%={{ }}=%></button>
+      <h1>{{ 'devmy-likes' | translate: { counter: counter() | number } }}</h1>
+      <button (click)="add()">{{ 'add-like' | translate }}</button>
 
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {
           <button class="btn-outline" (click)="changeLanguage(lang)">
-            {{ =<% %>= }}{{ lang | uppercase }}<%={{ }}=%>
+            {{ lang | uppercase }}
           </button>
         }
       </div>
     </div>
   `,
   styles: `
-      .devmy {
-          width: 100dvw;
-          height: 100dvh;
-          background: #191616;
-          font-family: Monaco, 'Lucida Console', monospace;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+    .devmy {
+      width: 100dvw;
+      height: 100dvh;
+      background: #191616;
+      font-family: Monaco, 'Lucida Console', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-          h1 {
-              color: white;
-              margin: 1rem 0;
-          }
-
-          button {
-              background: #ff6600;
-              color: white;
-              padding: 0.5rem 1.5rem;
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all ease-in-out 0.3s;
-
-              &:hover {
-                  background: #d65802;
-              }
-
-              &.btn-outline {
-                  border: 1px solid #ff6600;
-                  background: transparent;
-
-                  &:hover {
-                      background: #ff6600;
-                  }
-              }
-          }
-
-          .language-selector {
-              position: absolute;
-              bottom: 1rem;
-              right: 1rem;
-              display: flex;
-              gap: 1rem;
-          }
+      h1 {
+        color: white;
+        margin: 1rem 0;
       }
+
+      button {
+        background: #ff6600;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+          background: #d65802;
+        }
+
+        &.btn-outline {
+          border: 1px solid #ff6600;
+          background: transparent;
+
+          &:hover {
+            background: #ff6600;
+          }
+        }
+      }
+
+      .language-selector {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 1rem;
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

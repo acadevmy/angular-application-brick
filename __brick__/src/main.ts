@@ -21,7 +21,9 @@ fast(bootstrapApplication, AppComponent, {
     (): ProvidersDefaultExport => import('./app/core/i18n/i18n.config'),
   ],
 })
-  .then(async () => import('./app/configs/sentry.config').then((config) => config.initSentryConfig()))
+  .then(async () =>
+    import('./app/configs/sentry.config').then((config) => config.initSentryConfig()),
+  )
   .catch((err) =>
     // eslint-disable-next-line no-console
     console.error(err),

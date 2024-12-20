@@ -23,7 +23,7 @@ export function initSentryConfig(): void {
     tracesSampleRate: toNumber(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_TRACE_SAMPLE_RATE),
     replaysSessionSampleRate: toNumber(import.meta.env?.{{applicationName.constantCase()}}_SENTRY_REPLAY_SAMPLE_RATE),
     replaysOnErrorSampleRate: toNumber(
-      import.meta.env?.{{applicationName.constantCase()}}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE
+      import.meta.env?.{{applicationName.constantCase()}}_SENTRY_REPLAY_ON_ERROR_SAMPLE_RATE,
     ),
     tracePropagationTargets: split(
       import.meta.env?.{{applicationName.constantCase()}}_SENTRY_TRACE_PROPAGATION_TARGETS,
@@ -46,5 +46,5 @@ export default [
   {
     provide: TraceService,
     deps: [Router],
-  }
+  },
 ] satisfies Array<Provider | EnvironmentProviders>;

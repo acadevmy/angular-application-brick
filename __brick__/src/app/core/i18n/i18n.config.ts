@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { importProvidersFrom } from '@angular/core';
 import {
   IModuleTranslationOptions as ModuleTranslationOptions,
   ModuleTranslateLoader,
 } from '@larscom/ngx-translate-module-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { I18nService } from './services';
 
@@ -13,7 +13,7 @@ export function moduleHttpLoaderFactory(http: HttpClient): ModuleTranslateLoader
 
   const options: ModuleTranslationOptions = {
     lowercaseNamespace: true,
-    modules: [{baseTranslateUrl}],
+    modules: [{ baseTranslateUrl }],
   };
 
   return new ModuleTranslateLoader(http, options);
@@ -21,17 +21,15 @@ export function moduleHttpLoaderFactory(http: HttpClient): ModuleTranslateLoader
 
 export const i18nConfig = [
   I18nService,
-  importProvidersFrom(
-    TranslateModule.forRoot({
-      defaultLanguage: 'it',
-      useDefaultLang: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: moduleHttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
-  ),
+  provideTranslateService({
+    defaultLanguage: 'it',
+    useDefaultLang: true,
+    loader: {
+      provide: TranslateLoader,
+      useFactory: moduleHttpLoaderFactory,
+      deps: [HttpClient],
+    },
+  }),
 ];
 
 export default i18nConfig;

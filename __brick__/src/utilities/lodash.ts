@@ -4,8 +4,7 @@ export const isWhitespace: (value?: string) => boolean = (value) => isEmpty(trim
 
 export const isNotWhitespace: (value?: string) => boolean = negate(isWhitespace);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isNotEmpty: (value?: any) => boolean = negate(isEmpty);
+export const isNotEmpty: (value?: unknown) => boolean = negate(isEmpty);
 
 export const toBoolean: (value?: unknown) => boolean = (value) => {
   if (isNil(value)) {
