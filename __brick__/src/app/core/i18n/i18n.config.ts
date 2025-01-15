@@ -3,8 +3,7 @@ import {
   IModuleTranslationOptions as ModuleTranslationOptions,
   ModuleTranslateLoader,
 } from '@larscom/ngx-translate-module-loader';
-import { TranslateLoader } from '@ngx-translate/core';
-import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 
 import { I18nService } from './services';
 

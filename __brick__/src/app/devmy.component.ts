@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
 import { I18nService, SupportedLanguage } from './core';
 
 @Component({
-  selector: 'app-devmy',
+  selector: '{{prefix.paramCase()}}-devmy',
   imports: [TranslatePipe, UpperCasePipe, NgOptimizedImage, DecimalPipe],
   template: `
     <div class="devmy">
