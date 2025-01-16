@@ -2,7 +2,6 @@
   "name": "{{applicationName.paramCase()}}",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.1.2",
   "scripts": {
     "preinstall": "pnpm dlx only-allow pnpm",
     "dev": "ng serve",
@@ -56,6 +55,16 @@
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.5.4"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.10.0",
+    "pnpm": ">=9.15.0"
+  },
+  "pnpm": {
+    "executionEnv": {
+      "nodeVersion": "20.10.0"
+    }
   },
   "nx": {
     "targets": {
