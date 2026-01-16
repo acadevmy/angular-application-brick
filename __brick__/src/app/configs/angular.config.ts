@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { EnvironmentProviders, Provider, provideZoneChangeDetection } from '@angular/core';
+import { EnvironmentProviders, Provider, provideZonelessChangeDetection } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   provideClientHydration,
@@ -14,6 +14,6 @@ export default [
   provideAnimationsAsync(),
   provideHttpClient(),
   ReactiveFormsModule,
-  provideZoneChangeDetection({ eventCoalescing: true }),
+  provideZonelessChangeDetection(),
   provideClientHydration(withIncrementalHydration(), withEventReplay()),
 ] satisfies Array<Provider | EnvironmentProviders>;
