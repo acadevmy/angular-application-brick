@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
+import { getBrowserCultureLang, getBrowserLang, TranslocoService } from '@jsverse/transloco';
 import { map, Observable } from 'rxjs';
 
 import { SupportedLanguage, supportedLanguages } from '../models';
@@ -23,11 +23,11 @@ export class I18nService {
   }
 
   public get browserLanguage(): string | undefined {
-    return this.translocoService.getBrowserLang();
+    return getBrowserLang();
   }
 
-  public get browserCultureLanguage(): string | undefined {
-    return this.translocoService.getBrowserCultureLang();
+  public get browserCultureLanguage(): string {
+    return getBrowserCultureLang();
   }
 
   public use(lang: SupportedLanguage): void {
