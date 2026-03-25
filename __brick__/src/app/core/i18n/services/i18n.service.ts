@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { getBrowserCultureLang, getBrowserLang, TranslocoService } from '@jsverse/transloco';
 import { map, Observable } from 'rxjs';
 
@@ -6,7 +6,9 @@ import { SupportedLanguage, supportedLanguages } from '../models';
 
 @Injectable()
 export class I18nService {
-  public constructor(private readonly translocoService: TranslocoService) {
+  private readonly translocoService = inject(TranslocoService);
+
+  public constructor() {
     this.translocoService.setActiveLang(this.translocoService.getDefaultLang());
   }
 
