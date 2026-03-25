@@ -1,48 +1,44 @@
 import { Injectable } from '@angular/core';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { TranslocoService } from '@jsverse/transloco';
+import { map, Observable } from 'rxjs';
 
 import { SupportedLanguage, supportedLanguages } from '../models';
 
 @Injectable()
 export class I18nService {
-  public constructor(private readonly translateService: TranslateService) {
-    this.translateService.use(this.translateService.defaultLang);
+  public constructor(private readonly translocoService: TranslocoService) {
+    this.translocoService.setActiveLang(this.translocoService.getDefaultLang());
   }
 
   public get currentLanguage(): SupportedLanguage {
-    return this.translateService.currentLang as SupportedLanguage;
+    return this.translocoService.getActiveLang() as SupportedLanguage;
   }
 
   public get supportedLanguages(): SupportedLanguage[] {
     return Object.values(supportedLanguages);
   }
 
-  public get onLangChange(): Observable<LangChangeEvent> {
-    return this.translateService.onLangChange.asObservable();
-  }
-
-  public get ngxTranslateService(): TranslateService {
-    return this.translateService;
+  public get onLangChange(): Observable<SupportedLanguage> {
+    return this.translocoService.langChanges$.pipe(map((lang) => lang as SupportedLanguage));
   }
 
   public get browserLanguage(): string | undefined {
-    return this.translateService.getBrowserLang();
+    return this.translocoService.getBrowserLang();
   }
 
   public get browserCultureLanguage(): string | undefined {
-    return this.translateService.getBrowserCultureLang();
+    return this.translocoService.getBrowserCultureLang();
   }
 
-  public use(lang: SupportedLanguage): Observable<unknown> {
-    return this.translateService.use(lang);
+  public use(lang: SupportedLanguage): void {
+    this.translocoService.setActiveLang(lang);
   }
 
   public instantTranslate(key: string, params?: object): string {
-    return this.translateService.instant(key, params);
+    return this.translocoService.translate(key, params);
   }
 
   public translate(key: string, params?: object): Observable<string> {
-    return this.translateService.get(key, params);
+    return this.translocoService.selectTranslate(key, params);
   }
 }

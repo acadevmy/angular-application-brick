@@ -1,14 +1,14 @@
 import { DecimalPipe, NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { interval } from 'rxjs';
 
 import { I18nService, SupportedLanguage } from './core';
 
 @Component({
   selector: '{{prefix.paramCase()}}-devmy',
-  imports: [TranslatePipe, UpperCasePipe, NgOptimizedImage, DecimalPipe],
+  imports: [TranslocoPipe, UpperCasePipe, NgOptimizedImage, DecimalPipe],
   template: `
     <div class="devmy">
       <img
@@ -26,8 +26,8 @@ import { I18nService, SupportedLanguage } from './core';
         priority
       />
 
-      <h1>{{ 'devmy-likes' | translate: { counter: counter() | number } }}</h1>
-      <button (click)="add()">{{ 'add-like' | translate }}</button>
+      <h1>{{ 'devmy-likes' | transloco: { counter: counter() | number } }}</h1>
+      <button (click)="add()">{{ 'add-like' | transloco }}</button>
 
       <div class="language-selector">
         @for (lang of supportedLanguages; track lang) {

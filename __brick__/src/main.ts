@@ -3,7 +3,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { DefaultExport } from '@angular/router';
 import { fast } from 'ngx-fastboot';
 
-import { AppComponent } from './app/app.component';
+import { App } from './app/app';
 import { toBoolean } from './utilities';
 
 if (!isDevMode() || toBoolean(import.meta.env.{{applicationName.constantCase()}}_PRODUCTION)) {
@@ -12,7 +12,7 @@ if (!isDevMode() || toBoolean(import.meta.env.{{applicationName.constantCase()}}
 
 type ProvidersDefaultExport = Promise<DefaultExport<Array<EnvironmentProviders | Provider>>>;
 
-fast(bootstrapApplication, AppComponent, {
+fast(bootstrapApplication, App, {
   providers: [
     (): ProvidersDefaultExport => import('./app/configs/sentry.config'),
     (): ProvidersDefaultExport => import('./app/configs/router.config'),

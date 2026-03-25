@@ -7,18 +7,16 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
+          "style": "css",
           "inlineStyle": true,
           "inlineTemplate": true,
           "changeDetection": "OnPush",
           "skipTests": true,
-          "standalone": true,
           "flat": true,
           "prefix": "{{prefix.paramCase()}}"
         },
         "@schematics/angular:directive": {
           "flat": true,
-          "standalone": true,
           "skipTests": true,
           "prefix": "{{prefix.paramCase()}}"
         },
@@ -34,8 +32,7 @@
         },
         "@schematics/angular:pipe": {
           "skipTests": true,
-          "flat": true,
-          "standalone": true
+          "flat": true
         },
         "@schematics/angular:service": {
           "flat": true
@@ -57,19 +54,18 @@
             "browser": "src/main.ts",
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/assets/scss"
-              ]
-            },
             "scripts": []
           },
           "configurations": {
@@ -111,6 +107,9 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
         },
         "extract-i18n": {
           "builder": "@ngx-env/builder:extract-i18n",

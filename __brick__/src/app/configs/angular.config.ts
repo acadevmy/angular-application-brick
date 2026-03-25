@@ -1,5 +1,10 @@
 import { provideHttpClient } from '@angular/common/http';
-import { EnvironmentProviders, Provider, provideZonelessChangeDetection } from '@angular/core';
+import {
+  EnvironmentProviders,
+  Provider,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   provideClientHydration,
@@ -13,6 +18,7 @@ export default [
   provideAnimations(),
   provideAnimationsAsync(),
   provideHttpClient(),
+  provideBrowserGlobalErrorListeners(),
   ReactiveFormsModule,
   provideZonelessChangeDetection(),
   provideClientHydration(withIncrementalHydration(), withEventReplay()),
